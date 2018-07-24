@@ -1,3 +1,4 @@
+# rialsではTime型は非主流
 require 'time'
 
 value = Time.now
