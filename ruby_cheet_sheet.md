@@ -65,7 +65,6 @@ String#scrubで不正バイトを除去可能
   * [Ruby の invalid byte sequence in UTF-8 例外を encode("UTF-8", "UTF-8") で回避するのはおかしいよ、という話](http://blog.livedoor.jp/sonots/archives/23652294.html)
   * [Ruby 2.1.0 に追加される不正なバイト列を除去する String#scrub の紹介](http://blog.livedoor.jp/sonots/archives/34702351.html)
 
-
 ## Rails
 * gemfileにおけるローカルgemの指定方法  
 `gem 'hoge_gem' , path: "/path/to/gem/directory/"`
@@ -105,4 +104,31 @@ https://medium.com/@r7kamura/activerecord%E3%82%92%E8%A9%A6%E3%81%99%E3%81%A8%E3
   ファイル名の文字化けが治る
   * git config --global core.pager "LESSCHARSET=utf-8 less"  
   内容の文字化けが治る
-  
+
+* GHEのssl証明書をgitに読み込ませる方法  
+  [Adding a corporate (or self-signed) certificate authority to git.exe’s store](https://blogs.msdn.microsoft.com/phkelley/2014/01/20/adding-a-corporate-or-self-signed-certificate-authority-to-git-exes-store/)
+
+## デバッグ関連
+* webページへのcurlコマンド自動生成
+  * chromeのdeveloperツールのnetwoerkで通信を選んで、
+    * 右クリック
+    * copy
+    * copy as cURLでコマンドでコマンド自動生成できる
+  * ちなみにcopy as PowerShellでPS用コマンドも生成できる
+  * マジ神機能！
+
+* tcpの通信内容を見たいとき  
+  tdpdumpってコマンドでできるらしい  
+  ただし、トラフィックが増えるので本番環境ではまず使わないほうがいいらしい
+
+* [HTTPリクエストを送信できるChromeアドオン](http://redmine.tabelog.local/projects/tabelog/wiki/TabelogAppliReplaceAPIValidation)
+  * テストの時に役立つ
+
+* ajaxのデバッグ
+  クライアントからajaxのリクエストを送るには？  
+  [Restlet Client](https://chrome.google.com/webstore/detail/restlet-client-rest-api-t/aejoelaoggembcahagimdiliamlcdmfm)を使ってajaxであることを示す以下のリクエストヘッダを設定し、当該のURLにgetなりpostなりする
+    * X-Requested-With: XMLHttpRequest  
+    これでrailsのxhr?をパスできる
+
+* [ガラケーのUser-AgentをシミュレートできるChromeアドオン](https://chrome.google.com/webstore/detail/firemobilesimulator-for-g/mkihbloiacgiofaejgagokalpeflnmbe)  
+  すごい便利
