@@ -51,15 +51,52 @@ sortやshuffleなど、新たな配列を返すメソッドはsort!など「!」
 * {:name => "GEROMAX"} == {name: "GEROMAX"}  
 後者はシンボルを使ったハッシュ定義のシンタックスシュガー
 
+## Gem
+
+
 ## その他
 * Object.inspect
 要求されたオブジェクトを表現する文字列を返します。  
 ※シリアライズ結果と解釈可能か。。
 
-## Rails
+* エラー ArgumentError: invalid byte sequence in UTF-8  
+UTF-8からすると不正なバイト列が含まれた文字列にgsub等をすると発生する例外  
+String#scrubで不正バイトを除去可能  
+  * [Ruby の invalid byte sequence in UTF-8 例外を encode("UTF-8", "UTF-8") で回避するのはおかしいよ、という話](http://blog.livedoor.jp/sonots/archives/23652294.html)
+  * [Ruby 2.1.0 に追加される不正なバイト列を除去する String#scrub の紹介](http://blog.livedoor.jp/sonots/archives/34702351.html)
 
-### 4.4.4章引用
+
+## Rails
+* gemfileにおけるローカルgemの指定方法  
+`gem 'hoge_gem' , path: "/path/to/gem/directory/"`
+
+* railsコンソールでの_pathとか_urlメソッドの確認方法  
+`irb(main):001> app.hogehoge_path`  
+`irb(main):001> app.hogehoge_url`  
+http://interu.hatenablog.com/entry/20101215/1292416973
+
+* render時のtext/plainの出所  
+  ここかもしれない  
+  https://github.com/rails/rails/blob/23f80cee1845f85ed3aad4b4fb3211cdadf53da8/actionpack/lib/action_dispatch/middleware/static.rb#L83
+
+* railsコンソールでDBに直接クエリ発行  
+`ActiveRecord::Base.connection.select_all("select 'hogehoge'")`
+
+* ActiveRecordを試すときに便利なやつ  
+https://medium.com/@r7kamura/activerecord%E3%82%92%E8%A9%A6%E3%81%99%E3%81%A8%E3%81%8D%E3%81%AB%E4%BE%BF%E5%88%A9%E3%81%AA%E3%82%84%E3%81%A4-f5a10a8c17d8
+
+* さっと仕掛けるログ  
+`logger.debug "[GEROMAX] PLACE:#{self.class.name}\##{__method__} ここやでトントン"`
+
+### Rails チュートリアル 4.4.4 章引用
 `実は、Railsは確かにRubyで書かれていますが、既にRubyとは別物なのです。Railsのクラスは、普通のRubyオブジェクトと同様に振る舞うものもありますが、多くのクラスにはRailsの魔法の粉が振りかけられています。Railsは独特であり、Rubyとは切り離して学習する必要があります。`
+
+## RSpec
+
+### DEPRECATION WARNINGのテスト方法
+* expect(ActiveSupport::Deprecation).to receive(:warn).with("hogehgoe")  
+  do_warning_occur_process()  
+[参考](https://morizyun.github.io/ruby/rails-function-rails-logger.html)
 
 ## Git
 * gitのdiffが文字化けするとき  
