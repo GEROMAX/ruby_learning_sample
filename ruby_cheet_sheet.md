@@ -87,6 +87,13 @@ https://medium.com/@r7kamura/activerecord%E3%82%92%E8%A9%A6%E3%81%99%E3%81%A8%E3
 * さっと仕掛けるログ  
 `logger.debug "[GEROMAX] PLACE:#{self.class.name}\##{__method__} ここやでトントン"`
 
+* Completedログの見方  
+  `Completed 200 OK in 8567ms (Views: 1543.8ms | ActiveRecord: 3175.6ms)`  
+  上記のようなログの場合、それぞれactionの処理時間、Viewの処理時間、ActiveRecordの処理時間となる  
+  ActiveRecordの処理時間は、発行したクエリの結果がfetchされるまでの様子(ActiveRecordオブジェクトの生成時間は含まない模様)  
+  https://qiita.com/koshigoe/items/c0c4180518bf5f90451d  
+  https://railsguides.jp/active_support_instrumentation.html#process-action-action-controller
+
 ### Rails チュートリアル 4.4.4 章引用
 `実は、Railsは確かにRubyで書かれていますが、既にRubyとは別物なのです。Railsのクラスは、普通のRubyオブジェクトと同様に振る舞うものもありますが、多くのクラスにはRailsの魔法の粉が振りかけられています。Railsは独特であり、Rubyとは切り離して学習する必要があります。`
 
