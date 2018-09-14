@@ -81,10 +81,19 @@ String#scrubで不正バイトを除去可能
 * gemfileにおけるローカルgemの指定方法  
 `gem 'hoge_gem' , path: "/path/to/gem/directory/"`
 
+* railsコンソール起動時のカレントディレクトリはアプリケーションのルートディレクトリを指す  
+  ```
+  /hoge/sample_app/  
+  ∟app  
+  ∟bin  
+  ∟config  
+  ```
+  上記のような場合、`/hoge/sample_app`となる
+
 * railsコンソールでの_pathとか_urlメソッドの確認方法  
-`irb(main):001> app.hogehoge_path`  
-`irb(main):001> app.hogehoge_url`  
-http://interu.hatenablog.com/entry/20101215/1292416973
+  `irb(main):001> app.hogehoge_path`  
+  `irb(main):001> app.hogehoge_url`  
+  http://interu.hatenablog.com/entry/20101215/1292416973
 
 * render時のtext/plainの出所  
   ここかもしれない  
