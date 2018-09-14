@@ -65,6 +65,18 @@ String#scrubで不正バイトを除去可能
   * [Ruby の invalid byte sequence in UTF-8 例外を encode("UTF-8", "UTF-8") で回避するのはおかしいよ、という話](http://blog.livedoor.jp/sonots/archives/23652294.html)
   * [Ruby 2.1.0 に追加される不正なバイト列を除去する String#scrub の紹介](http://blog.livedoor.jp/sonots/archives/34702351.html)
 
+* ファイル書き込みのバグ？  
+  Windows環境`ruby 2.4.4p296 (2018-03-28 revision 63013) [x64-mingw32]`では、100MBクラスのファイルを一気に書き込もうとすると、データが破損する事象を確認した  
+  以下のようなコードで回避できた  
+  ```
+  offset = 0
+  while offset < dmp.size
+    offset += IO.write(cache_file_name, dmp[offset..(offset + 999999)], offset, encoding: FILE_ENCODE)
+  end
+  ```
+  なお、linux環境では未確認
+
+
 ## Rails
 * gemfileにおけるローカルgemの指定方法  
 `gem 'hoge_gem' , path: "/path/to/gem/directory/"`
