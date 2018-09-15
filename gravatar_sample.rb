@@ -7,5 +7,5 @@ def gravatar_uri(email)
 end
 
 begin
-  p gravatar_uri('tobita0112@gmail.com')
+  puts gravatar_uri('tobita0112@gmail.com')
 end
