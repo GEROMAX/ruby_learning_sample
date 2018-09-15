@@ -160,3 +160,8 @@ https://medium.com/@r7kamura/activerecord%E3%82%92%E8%A9%A6%E3%81%99%E3%81%A8%E3
 
 * [ガラケーのUser-AgentをシミュレートできるChromeアドオン](https://chrome.google.com/webstore/detail/firemobilesimulator-for-g/mkihbloiacgiofaejgagokalpeflnmbe)  
   すごい便利
+
+## PowerShell
+* backspece押下時のBeep音の消し方  
+  `Set-PSReadlineOption -BellStyle None`をプロファイルに追加する  
+  [Windows 10 の PowerShell で Backspace の音を消す方法 + PowerShell のプロファイル](http://yaimairi.hateblo.jp/entry/2016/09/09/225733)
