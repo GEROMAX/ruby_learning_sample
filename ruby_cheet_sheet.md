@@ -115,8 +115,14 @@ https://medium.com/@r7kamura/activerecord%E3%82%92%E8%A9%A6%E3%81%99%E3%81%A8%E3
   https://qiita.com/koshigoe/items/c0c4180518bf5f90451d  
   https://railsguides.jp/active_support_instrumentation.html#process-action-action-controller
 
-### Rails チュートリアル 4.4.4 章引用
+### Rails チュートリアル引用
+* 4.4.4 章  
 `実は、Railsは確かにRubyで書かれていますが、既にRubyとは別物なのです。Railsのクラスは、普通のRubyオブジェクトと同様に振る舞うものもありますが、多くのクラスにはRailsの魔法の粉が振りかけられています。Railsは独特であり、Rubyとは切り離して学習する必要があります。`
+* 5.1章  
+`image_tagの効果を確かめるために、ブラウザから生成されたHTMLを見てみましょう。`  
+  `  <img alt="Rails logo" src="/assets/rails-9308b8f92fea4c19a3a0d8385b494526.png" />`  
+`ファイル名が重ならないようにするために、9308b8f92fea4c19a3a0d8385b494526という文字列 (実際の文字列はシステムごとに異なります) をRailsが追加していることがわかります。これは、例えば画像ファイルを新しい画像に更新したときに、ブラウザ内に保存されたキャッシュに意図的にヒットさせないようにするための仕組みです。`  
+`alt属性は、画像がない場合に代わりに表示される文字列です。例えば視覚障害のあるユーザーが使うスクリーンリーダーでは、ここの属性が読み上げられて、そこに画像があることが示されます。`
 
 ## RSpec
 
