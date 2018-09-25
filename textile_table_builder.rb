@@ -1,21 +1,14 @@
 class TextileTableBuilder
-  attr_accessor :line_feed_code
+  attr_accessor :line_feed_code, :sorted_keys
 
   def initialize(data_source, options = {})
-    @line_feed_code = options[:line_feed_code] ||= "\r\n"
     @data_source = data_source
+    @line_feed_code = options[:line_feed_code] ||= "\n"
+    @sorted_keys = options[:sorted_keys] ||= @data_source.keys.sort {|a,b| a <=> b}
   end
 
   def to_table
     [create_header].concat(create_rows).join(@line_feed_code)
-  end
-
-  def sorted_keys
-    @sorted_keys ||= @data_source.keys.sort {|a,b| a <=> b}
-  end
-
-  def sorted_keys=(value)
-    @sorted_keys = value
   end
 
   def create_header
