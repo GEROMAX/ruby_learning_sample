@@ -134,10 +134,11 @@ https://medium.com/@r7kamura/activerecord%E3%82%92%E8%A9%A6%E3%81%99%E3%81%A8%E3
 ## Git
 * gitのdiffが文字化けするとき  
 [git diff での日本語の文字化け](http://maku77.github.io/git/settings/garbling.html)
-  * git config --global core.quotepath false  
-  ファイル名の文字化けが治る
-  * git config --global core.pager "LESSCHARSET=utf-8 less"  
-  内容の文字化けが治る
+  * ファイル名の文字化けを治す  
+  `git config --global core.quotepath false`
+  * 内容の文字化けを治す  
+    `git config --global core.pager "LESSCHARSET=utf-8 less"`
+
 
 * GHEのssl証明書をgitに読み込ませる方法  
   [Adding a corporate (or self-signed) certificate authority to git.exe’s store](https://blogs.msdn.microsoft.com/phkelley/2014/01/20/adding-a-corporate-or-self-signed-certificate-authority-to-git-exes-store/)
