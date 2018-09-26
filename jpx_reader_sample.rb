@@ -55,14 +55,12 @@ class JPXFileReader
 
   def create_listed_company_infos
     book = Spreadsheet.open(@file_path)
-    sheet = book.worksheet 0
-    lst = Array.new
-    header = true
+    sheet = book.worksheet(0)
+    lst = []
+    header = nil
     sheet.each do |row|
-      if header
-        header = false
-        next
-      end
+      next unless header ||= true
+
       lci = ListedCompanyInfo.new
       lci.securities_code = row[COL_SECURITIES_CODE].to_i
       lci.name = row[COL_NAME]
@@ -82,12 +80,6 @@ end
 
 ########################################################################################################################
 begin
-
   infos = JPXFileReader.new(JPXCrawlHelper.get_listed_company_file).create_listed_company_infos
-  infos.each do |info|
-    puts info.inspect
-  end
-
-rescue => exception
-  e_logger.error(exception)
+  puts infos.inspect
 end
