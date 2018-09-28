@@ -77,6 +77,10 @@ String#scrubで不正バイトを除去可能
   なお、linux環境では未確認
 
 
+## 良記事などのリンク
+* [食べログのマイクロサービス化PJについて](https://www.slideshare.net/KoutaTerashima/pj-2018926-ebisurb-18)
+
+
 ## Rails
 * gemfileにおけるローカルgemの指定方法  
 `gem 'hoge_gem' , path: "/path/to/gem/directory/"`
