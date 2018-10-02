@@ -1,12 +1,11 @@
 require './textile_table_builder'
 
 class TextileCalendarRenderer
-  attr_reader :calendar
+  attr_reader :calendar, :line_feed_code
 
-  LINE_FEED_CODE = "\r\n"
-
-  def initialize(calendar)
+  def initialize(calendar, options = {})
     @calendar = calendar
+    @line_feed_code = options[:line_feed_code] ||= "\n"
   end
 
   def render
@@ -19,14 +18,14 @@ class TextileCalendarRenderer
       days[offset..(offset + 6)].each do |key_day|
         week_key = day_of_weeks.select {|k,v| v.eql?(key_day.cwday)}.keys[0]
         target_box = table_data[week_key]
-        target_box << @calendar[key_day].reduce("#{key_day.month}/#{key_day.day}#{LINE_FEED_CODE}　") do |result, batch_info|
-          result << "#{LINE_FEED_CODE}#{batch_info}"
+        target_box << @calendar[key_day].reduce("#{key_day.month}/#{key_day.day}#{@line_feed_code}　") do |result, batch_info|
+          result << "#{@line_feed_code}#{batch_info}"
         end
       end
       offset += 7
     end
 
-    builder = TextileTableBuilder.new(table_data, sorted_keys: ["月", "火", "水", "木", "金", "土", "日"], line_feed_code: LINE_FEED_CODE)
+    builder = TextileTableBuilder.new(table_data, sorted_keys: ["月", "火", "水", "木", "金", "土", "日"], line_feed_code: @line_feed_code)
     puts builder.to_table
   end
 end
