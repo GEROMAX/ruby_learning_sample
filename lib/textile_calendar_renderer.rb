@@ -1,4 +1,4 @@
-require './textile_table_builder'
+require './lib/textile_table_builder'
 
 class TextileCalendarRenderer
   attr_reader :calendar, :line_feed_code
