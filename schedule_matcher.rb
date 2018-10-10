@@ -6,6 +6,13 @@ class ScheduleMatcher
     @day_of_weeks = {"月" => 1, "火" => 2, "水" => 3, "木" => 4, "金" => 5, "土" => 6, "日" => 7}
   end
 
+  def match_date?(date)
+    md = /(?<find_year>[0-9]{4})\/(?<find_month>[0-9]{2})\/(?<find_day>[0-9]{2})/.match(@data)
+    return false unless md
+    data_date = Date.new(md[:find_year].to_i, md[:find_month].to_i, md[:find_day].to_i)
+    data_date.eql?(date)
+  end
+
   # like `１日` `13日`
   def match_day?(day)
     find_day = /(?<find_day>^\d+)/.match(@data)
