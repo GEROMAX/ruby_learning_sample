@@ -10,8 +10,8 @@ module JPXCrawlHelper
   LISTED_COMPANY_FILE_URL = 'http://www.jpx.co.jp/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_j.xls'
   module_function
 
-  def get_listed_company_file
-    file_path = get_newest_file_name
+  def listed_company_file
+    file_path = newest_file_name
     return file_path if FileTest.exist?(file_path) && FileTest.size(file_path) > 0
 
     # 最新ファイルがなければJPXから取得
@@ -23,7 +23,7 @@ module JPXCrawlHelper
     file_path
   end
 
-  def get_newest_file_name
+  def newest_file_name
     # 毎月10日の9:00以降を当月の最新ファイルとする
     # (毎月第3営業日の午前9時以降に前月末データを掲載します。)
     now = DateTime.now
@@ -87,6 +87,6 @@ end
 
 ########################################################################################################################
 begin
-  infos = JPXFileReader.new(JPXCrawlHelper.get_listed_company_file).create_listed_company_infos
+  infos = JPXFileReader.new(JPXCrawlHelper.listed_company_file).create_listed_company_infos
   puts infos.inspect
 end
