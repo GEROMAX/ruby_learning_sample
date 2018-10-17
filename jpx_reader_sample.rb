@@ -13,19 +13,19 @@ module JPXCrawlHelper
   def get_listed_company_file
     file_path = get_newest_file_name
     return file_path if FileTest.exist?(file_path) && FileTest.size(file_path) > 0
-    
-    #最新ファイルがなければJPXから取得
+
+    # 最新ファイルがなければJPXから取得
     open(LISTED_COMPANY_FILE_URL, 'rb') do |read_file|
       open(file_path, 'wb') do |saved_file|
         saved_file.write(read_file.read)
       end
     end
-    return file_path
+    file_path
   end
 
   def get_newest_file_name
-    #毎月10日の9:00以降を当月の最新ファイルとする
-    #(毎月第3営業日の午前9時以降に前月末データを掲載します。)
+    # 毎月10日の9:00以降を当月の最新ファイルとする
+    # (毎月第3営業日の午前9時以降に前月末データを掲載します。)
     now = DateTime.now
     threshold = DateTime.new(now.year, now.mon, 10, 9, 0, 0)
     now.prev_month(now >= threshold ? 1 : 2).strftime("jpx_listed_company_%Y%m.xls")
@@ -33,8 +33,16 @@ module JPXCrawlHelper
 end
 
 class ListedCompanyInfo
-  attr_accessor :securities_code, :name, :other_names, :market, :industry_code_1st, :industry_name_1st, :industry_code_2nd, :industry_name_2nd, 
-    :stock_index_code, :stock_index_name
+  attr_accessor :securities_code,
+                :name,
+                :other_names,
+                :market,
+                :industry_code_1st,
+                :industry_name_1st,
+                :industry_code_2nd,
+                :industry_name_2nd,
+                :stock_index_code,
+                :stock_index_name
 end
 
 class JPXFileReader
@@ -75,7 +83,6 @@ class JPXFileReader
     end
     lst
   end
-  
 end
 
 ########################################################################################################################
