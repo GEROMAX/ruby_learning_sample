@@ -76,6 +76,9 @@ String#scrubで不正バイトを除去可能
   ```
   なお、linux環境では未確認
 
+* 脆弱性情報
+  https://sid.softek.jp/mypage
+
 
 ## 良記事などのリンク
 * [食べログのマイクロサービス化PJについて](https://www.slideshare.net/KoutaTerashima/pj-2018926-ebisurb-18)
