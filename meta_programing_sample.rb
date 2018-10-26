@@ -5,7 +5,7 @@ def read_model(model_class, id)
     when :id
       value = id
     else
-      value = "#{model_class.to_s.downcase}_#{attr_name.to_s}#{id}" if id
+      value = "#{model_class.to_s.downcase}_#{attr_name}#{id}" if id
     end
     attributes.store(attr_name, value)
   end
@@ -42,9 +42,14 @@ class ModelBase
     @id ||= @attributes[:id]
   end
 
+  def load
+    @attributes = read_model(self.class, @id)
+    self
+  end
+
   def change_value?
     @@model_attrs.any? do |attr_name|
-      !@attributes[attr_name].eql?(eval("@#{attr_name.to_s}"))
+      @attributes[attr_name] != eval("@#{attr_name}", binding, __FILE__, __LINE__)
     end
   end
 
@@ -66,11 +71,14 @@ end
 
 begin
 
-  tm = TestModel.new(id: 1)
-  puts tm.name
-  puts tm.value
-  tm.name = "rename"
-  puts tm.change_value?
-  p tm
+  tm1 = TestModel.new(id: 1)
+  puts tm1.name
+  puts tm1.value
+  # tm.name = "rename"
+  puts tm1.change_value?
+  p tm1
+
+  tm2 = TestModel.new(id: 2).load
+  p tm2
 
 end
