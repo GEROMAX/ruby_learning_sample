@@ -74,11 +74,15 @@ begin
   tm1 = TestModel.new(id: 1)
   puts tm1.name
   puts tm1.value
-  # tm.name = "rename"
   puts tm1.change_value?
   p tm1
 
+  puts ""
+
   tm2 = TestModel.new(id: 2).load
+  p tm2
+  tm2.name = "rename"
+  puts tm2.change_value?
   p tm2
 
 end
