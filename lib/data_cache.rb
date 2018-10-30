@@ -5,7 +5,7 @@ module DataCache
     dmp = Marshal.dump(data)
     offset = 0
     while offset < dmp.size
-      offset += IO.write(file_name, dmp[offset..(offset + 999999)], offset, encoding: FILE_ENCODE)
+      offset += IO.write(file_name, dmp[offset..(offset + 999_999)], offset, encoding: FILE_ENCODE)
     end
   end
 

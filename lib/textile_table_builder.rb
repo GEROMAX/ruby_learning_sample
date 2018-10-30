@@ -4,7 +4,7 @@ class TextileTableBuilder
   def initialize(data_source, options = {})
     @data_source = data_source
     @line_feed_code = options[:line_feed_code] ||= "\n"
-    @sorted_keys = options[:sorted_keys] ||= @data_source.keys.sort {|a,b| a <=> b}
+    @sorted_keys = options[:sorted_keys] ||= @data_source.keys.sort { |a, b| a <=> b }
   end
 
   def to_table
@@ -12,7 +12,7 @@ class TextileTableBuilder
   end
 
   def create_header
-    sorted_keys.reduce("|") {|textile, column_name| textile << "_. #{column_name} |" }
+    sorted_keys.reduce("|") { |textile, column_name| textile << "_. #{column_name} |" }
   end
   private :create_header
 

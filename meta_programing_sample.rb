@@ -70,7 +70,6 @@ class TestModel < ModelBase
 end
 
 begin
-
   tm1 = TestModel.new(id: 1)
   puts tm1.name
   puts tm1.value
@@ -84,5 +83,4 @@ begin
   tm2.name = "rename"
   puts tm2.change_value?
   p tm2
-
 end

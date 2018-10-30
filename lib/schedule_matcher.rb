@@ -24,7 +24,7 @@ class ScheduleMatcher
   def match_ordinal_day_of_week?(date)
     3.times do |i|
       pattern = ""
-      (i + 1).times {|j| pattern << '第(\d+)'}
+      (i + 1).times { pattern << '第(\d+)' }
       md = /#{pattern}(.)曜日/.match(@data)
       next unless md
 
@@ -32,7 +32,7 @@ class ScheduleMatcher
       return false unless @day_of_weeks[dow].eql?(date.cwday)
 
       ordinals = md[1..(i + 1)]
-      return true if ordinals.any? {|ord| ord.to_i.eql? day_of_week_ordinal_at_date(date) }
+      return true if ordinals.any? { |ord| ord.to_i.eql? day_of_week_ordinal_at_date(date) }
     end
     false
   end
@@ -56,7 +56,7 @@ class ScheduleMatcher
     if match_range
       day_a = @day_of_weeks[match_range[:find_day1]]
       day_b = @day_of_weeks[match_range[:find_day2]]
-      (day_a..day_b) === cwday
+      (day_a..day_b).cover?(cwday)
     else
       match_day = /(?<find_day_of_week>^.)曜日/.match(@data)
       match_day ? @day_of_weeks[match_day[:find_day_of_week]].eql?(cwday) : false
