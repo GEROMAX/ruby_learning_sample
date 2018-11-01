@@ -82,6 +82,7 @@ String#scrubで不正バイトを除去可能
 
 ## 良記事などのリンク
 * [食べログのマイクロサービス化PJについて](https://www.slideshare.net/KoutaTerashima/pj-2018926-ebisurb-18)
+* [昔見たバイトニックソートの仕組み](https://sojo.yamanashi.ac.jp/bul/final99/contents/ishihara/R0207/bitonic/bitonic-instance.html)
 
 
 ## Rails
