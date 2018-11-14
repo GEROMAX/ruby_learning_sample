@@ -173,6 +173,9 @@ https://medium.com/@r7kamura/activerecord%E3%82%92%E8%A9%A6%E3%81%99%E3%81%A8%E3
     * X-Requested-With: XMLHttpRequest  
     これでrailsのxhr?をパスできる
 
+* CSRF対策回避  
+  あらかじめ取得しておいたCSRFトークンを`Restlet`などでリクエストヘッダに`X-CSRF-Token`として設定する
+
 * [ガラケーのUser-AgentをシミュレートできるChromeアドオン](https://chrome.google.com/webstore/detail/firemobilesimulator-for-g/mkihbloiacgiofaejgagokalpeflnmbe)  
   すごい便利
 
