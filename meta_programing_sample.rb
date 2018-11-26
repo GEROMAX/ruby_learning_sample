@@ -39,7 +39,9 @@ class ModelBase
 
   def initialize(attributes = {})
     @attributes = attributes
-    @id ||= @attributes[:id]
+    @@model_attrs.each do |attr_name|
+      eval("@#{attr_name.to_s} = @attributes[attr_name]", binding, __FILE__, __LINE__)
+    end
   end
 
   def load
@@ -80,7 +82,12 @@ begin
 
   tm2 = TestModel.new(id: 2).load
   p tm2
-  tm2.name = "rename"
+  tm2.name = "value change check"
   puts tm2.change_value?
   p tm2
+
+  puts ""
+
+  tm3 = TestModel.new(id: 3, name: "initialize value check", value: "gero onsen")
+  p tm3
 end
