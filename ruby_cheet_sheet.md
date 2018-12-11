@@ -52,7 +52,13 @@ sortやshuffleなど、新たな配列を返すメソッドはsort!など「!」
 後者はシンボルを使ったハッシュ定義のシンタックスシュガー
 
 ## Gem
+* Gemのビルド  
+  gemspecファイルを指定  
+`gem build path/to/hogehoge.gemspec`
 
+* ローカルのGemをGemfileで指定する方法  
+  Gemファイルのあるディレクトリパスを指定  
+  `gem 'hogehoge', path: 'path/to/gem/directory'`
 
 ## その他
 * Object.inspect
@@ -76,13 +82,30 @@ String#scrubで不正バイトを除去可能
   ```
   なお、linux環境では未確認
 
-* 脆弱性情報
-  https://sid.softek.jp/mypage
+* スタックトトレースの取得  
+  [module function Kernel.#caller](https://docs.ruby-lang.org/ja/2.4.0/method/Kernel/m/caller.html)  
+  `puts caller.join("¥n")`
+
+* aliasしたメソッドの名前を取得  
+  [module function Kernel.#__callee__](https://docs.ruby-lang.org/ja/2.4.0/method/Kernel/m/__callee__.html)  
+  ```
+  irb(main):033:0> def gero; puts "#{__method__},#{__callee__}"; end
+  => :gero
+  irb(main):034:0> alias :max :gero
+  => nil
+  irb(main):036:0> gero
+  gero,gero
+  => nil
+  irb(main):037:0> max
+  gero,max
+  => nil
+  ```
 
 
 ## 良記事などのリンク
 * [食べログのマイクロサービス化PJについて](https://www.slideshare.net/KoutaTerashima/pj-2018926-ebisurb-18)
 * [昔見たバイトニックソートの仕組み](https://sojo.yamanashi.ac.jp/bul/final99/contents/ishihara/R0207/bitonic/bitonic-instance.html)
+* [softekの脆弱性情報](https://sid.softek.jp/mypage)
 
 
 ## Rails
@@ -146,7 +169,6 @@ https://medium.com/@r7kamura/activerecord%E3%82%92%E8%A9%A6%E3%81%99%E3%81%A8%E3
   `git config --global core.quotepath false`
   * 内容の文字化けを治す  
     `git config --global core.pager "LESSCHARSET=utf-8 less"`
-
 
 * GHEのssl証明書をgitに読み込ませる方法  
   [Adding a corporate (or self-signed) certificate authority to git.exe’s store](https://blogs.msdn.microsoft.com/phkelley/2014/01/20/adding-a-corporate-or-self-signed-certificate-authority-to-git-exes-store/)
