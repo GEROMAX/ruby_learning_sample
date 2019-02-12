@@ -101,12 +101,20 @@ String#scrubで不正バイトを除去可能
   => nil
   ```
 
+* パッケージの`jq`コマンドがくっそ便利、jsonがちょー見やすくなる  
+  `yum install jq`
+
 
 ## 良記事などのリンク
 * [食べログのマイクロサービス化PJについて](https://www.slideshare.net/KoutaTerashima/pj-2018926-ebisurb-18)
 * [昔見たバイトニックソートの仕組み](https://sojo.yamanashi.ac.jp/bul/final99/contents/ishihara/R0207/bitonic/bitonic-instance.html)
 * [softekの脆弱性情報](https://sid.softek.jp/mypage)
-
+* [BFF（Backends For Frontends）超入門――Netflix、Twitter、リクルートテクノロジーズが採用する理由 ](http://www.atmarkit.co.jp/ait/articles/1803/12/news012.html)  
+  これ、良い
+* [IPひろば](https://www.iphiroba.jp/)  
+  IPアドレスが何者かをざっくり調べられるサービスらしい
+* [HTTPステータスコードを適切に選ぶためのフローチャート](https://postd.cc/choosing-an-http-status-code/)
+* [Railsの基本理念 : Railsの生みの親が掲げる8つの原則](https://postd.cc/rails-doctrine/)
 
 ## Rails
 * gemfileにおけるローカルgemの指定方法  
